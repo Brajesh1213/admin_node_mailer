@@ -24,6 +24,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
+
 app.get('/', (req, res) => {
   res.status(200).send("API connected");
 });
