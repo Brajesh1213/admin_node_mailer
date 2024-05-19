@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import router from './router/list.router.js';
+import routers from './router/list.mail.router.js'
 
 dotenv.config();
 
@@ -18,7 +19,12 @@ mongoose.connect(process.env.MONGODB_URI, {
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+
+
 app.use('/userapi', router);
+app.use('/sendmail',routers);
+
+
 
 const port = process.env.PORT || 3000;
 console.log(`PORT: ${process.env.PORT}`);
